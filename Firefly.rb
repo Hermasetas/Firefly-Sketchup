@@ -7,7 +7,6 @@ module Firefly
     file_loaded(__FILE__)
   end
 
-
   def self.reload
     load 'Firefly/Main.rb'
     load 'Firefly/Geometry/Math_Util.rb'
