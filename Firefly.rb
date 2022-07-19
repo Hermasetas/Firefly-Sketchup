@@ -1,14 +1,15 @@
-require 'sketchup.rb'
-require 'extensions.rb'
-
 module Firefly
-    module main
-        unless file_loaded?(__FILE__)
-            ex = SketchupExtension.new('Firefly', 'Firefly/Main.rb')
-            ex.description = 'Firefly Daylight and Lighting simulations.'
-            ex.creator = 'Hermasetas'
-            Skecthup.register_extension(ex, true)
-            file_loaded(__FILE__)
-        end
-    end
+  unless file_loaded?(__FILE__)
+    ex = SketchupExtension.new('Firefly', 'Firefly/Main.rb')
+    ex.description = 'Firefly Daylight and Lighting simulations.'
+    ex.creator = 'Hermasetas'
+    Sketchup.register_extension(ex, true)
+    file_loaded(__FILE__)
+  end
+
+
+  def self.reload
+    load 'Firefly/Main.rb'
+    load 'Firefly/Geometry/Math_Util.rb'
+  end
 end

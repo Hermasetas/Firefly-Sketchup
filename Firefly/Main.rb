@@ -1,5 +1,5 @@
 module Firefly
-    module main
-        puts "hej"
-    end
+  module Main
+    puts 'Main loaded'
+  end
 end
