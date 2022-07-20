@@ -10,5 +10,6 @@ module Firefly
   def self.reload
     load 'Firefly/Main.rb'
     load 'Firefly/Geometry/Math_Util.rb'
+    load 'Firefly/Geometry/Component_Util.rb'
   end
 end

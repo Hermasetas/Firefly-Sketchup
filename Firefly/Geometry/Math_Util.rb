@@ -20,13 +20,13 @@ module Firefly
     end
 
     # Decompose a 4×4 transformation matrix into translation, scaling and rotation components.
-    # @param m [Array(16)] matrix
+    # @param m transformation matrix
     # @return [Array(3),Array(3),Array(3)] three arrays representing:
     #     the translation vector,
     #     the scaling factor per axis
-    #     the Euler rotation angles in radians
+    #     the Euler rotation angles in radians (XYZ)
     def self.decompose_transformation_matrix(m)
-      m = m.clone
+      m = m.to_a
       # Extract translation
       translation = m.values_at(12, 13, 14)
 
@@ -44,7 +44,7 @@ module Firefly
 
       # Verify orientation, if necessary invert it.
       tmp_z_axis = Geom::Vector3d.new(m[0], m[1], m[2]).cross(Geom::Vector3d.new(m[4], m[5], m[6]))
-      if tmp_z_axis.dot(Geom::Vector3d.new(m[8], m[9], m[10])).negative?
+      if tmp_z_axis.dot(Geom::Vector3d.new(m[8], m[9], m[10])) < 0
         scaling[0] *= -1
         m[0] = -m[0]
         m[1] = -m[1]
@@ -60,9 +60,22 @@ module Firefly
       s1 = Math.sin(theta1)
       c1 = Math.cos(theta1)
       theta3 = Math.atan2(s1 * m[8] - c1 * m[4], c1 * m[5] - s1 * m[9])
-      rotation = [-theta1, -theta2, -theta3]
+      rotation = [theta1, theta2, theta3]
 
       [translation, scaling, rotation]
+    end
+
+    def self.compose_transformation_matrix(translation, scaling, rotations)
+      tran = Geom::Transformation
+
+      tl = tran.translation translation
+      ts = tran.scaling scaling.x, scaling.y, scaling.z
+
+      tx = tran.rotation [0, 0, 0], [1, 0, 0], rotations.x
+      ty = tran.rotation [0, 0, 0], [0, 1, 0], rotations.y
+      tz = tran.rotation [0, 0, 0], [0, 0, 1], rotations.z
+
+      tl * tz * ty * tx * ts
     end
   end
 end
