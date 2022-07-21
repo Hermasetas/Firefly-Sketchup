@@ -1,8 +1,6 @@
 module Firefly
   # A module with handy math methods
   module MathUtil
-    puts 'MathUtil loaded'
-
     # Checks if two line segments intersect
     def self.line_segments_intersect?(p1, p2, p3, p4)
       # https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection#Given_two_points_on_each_line_segment
@@ -52,8 +50,6 @@ module Firefly
       end
 
       # Extract rotation
-      # Source: Extracting Euler Angles from a Rotation Matrix, Mike Day, Insomniac Games
-      # http://www.insomniacgames.com/mike-day-extracting-euler-angles-from-a-rotation-matrix/
       theta1 = Math.atan2(m[6], m[10])
       c2 = Math.sqrt(m[0]**2 + m[1]**2)
       theta2 = Math.atan2(-m[2], c2)

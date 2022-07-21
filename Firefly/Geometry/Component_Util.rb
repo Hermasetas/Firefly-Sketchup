@@ -1,8 +1,6 @@
 module Firefly
   # A module with handy component methods
   module ComponentUtil
-    puts 'ComponentUtil loaded'
-
     def self.calc_all_definition_levels(definitions)
       levels = Hash.new(0)
 

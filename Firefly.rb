@@ -8,8 +8,8 @@ module Firefly
   end
 
   def self.reload
-    load 'Firefly/Main.rb'
-    load 'Firefly/Geometry/Math_Util.rb'
-    load 'Firefly/Geometry/Component_Util.rb'
+    files = Dir.glob('C:/Users/herma/Documents/GitHub/Firefly-Sketchup/Firefly/**/*.rb')
+    files.each {|f| load f; puts File.basename(f) + " loaded"}
+    nil
   end
 end
