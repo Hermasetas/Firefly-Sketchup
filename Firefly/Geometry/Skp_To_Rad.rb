@@ -1,10 +1,19 @@
 module Firefly
   module SkpToRad
-    def self.write_all_to_rad(dir_name)
-      model = Sketchup.active_model
-      entities = model.entities
-      
+    def self.write_all_to_rad(dir_name)    
       # Write materials to a file
+      write_all_materials(dir_name)
+      
+      # Write component/Group definitions to seperate files
+      
+      # Write all component/group instances to a file
+      
+      # Write all faces to a file
+    end
+    
+    private_class_method def self.write_all_materials(dir_name)
+      model = Sketchup.active_model
+
       materials_file = File.join(dir_name, "materials.rad")
       File.open(materials_file, 'w') do |file|
         model.materials.each do |m|
@@ -12,16 +21,10 @@ module Firefly
           file.write(mat)
         end
       end
-
-      # Write component/Group definitions to seperate files
-
-      # Write all component/group instances to a file
-
-      # Write all faces to a file
     end
-
-
-
-
+    
+    
+    
+    
   end
 end
