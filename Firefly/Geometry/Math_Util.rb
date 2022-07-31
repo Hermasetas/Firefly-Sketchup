@@ -73,5 +73,13 @@ module Firefly
 
       tl * tz * ty * tx * ts
     end
+
+    def self.convert_to_metric(v)
+      return (v.to_f * 0.0254).round(3)
+    end
+
+    def self.convert_point_to_metric(p)
+      return p.to_a.map {|v| convert_to_metric v}
+    end
   end
 end
