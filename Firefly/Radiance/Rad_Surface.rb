@@ -11,12 +11,12 @@ module Firefly
         MathUtil.convert_point_to_metric(p)
       end
 
-      s1 = material_name + ' polygon ' + name
+      s1 = "\"#{material_name}\" polygon \"#{name}\""
       s2 = '0'
       s3 = '0'
-      s4 = "#{verticies.length * 3} #{verticies.each {|p| p.join(' ')}.join(' ')}"
+      s4 = "#{verticies.length * 3} #{verticies.each { |p| p.join(' ') }.join(' ')}"
   
-      [s1,s2,s3,s4].join("\n") + "\n"
+      "#{[s1, s2, s3, s4].join("\n")} \n"
     end
 
     # Creates a string representing a Radiance cylinder
@@ -31,10 +31,12 @@ module Firefly
       p2 = MathUtil.convert_point_to_metric(point2).join(' ')
       radius = radius.round(3)
 
-      s1 = material_name + ' cylinder ' + name
+      s1 = "\"#{material_name}\" cylinder \"#{name}\""
       s2 = '0'
       s3 = '0'
       s4 = "7 #{p1} #{p2} #{radius}"
+
+      "#{[s1, s2, s3, s4].join("\n")} \n"
     end
   end
 end

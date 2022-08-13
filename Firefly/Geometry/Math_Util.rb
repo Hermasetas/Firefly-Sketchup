@@ -75,11 +75,15 @@ module Firefly
     end
 
     def self.convert_to_metric(v)
-      return (v.to_f * 0.0254).round(3)
+      (v.to_f * 0.0254).round(3)
     end
 
     def self.convert_point_to_metric(p)
-      return p.to_a.map {|v| convert_to_metric v}
+      p.to_a.map { |v| convert_to_metric v }
+    end
+
+    def round_vector(v)
+      v.to_a.map { |n| n.round(3) }
     end
   end
 end

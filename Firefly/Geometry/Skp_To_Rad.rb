@@ -4,13 +4,15 @@ module Firefly
     def self.write_all_to_rad(dir_name)    
       # TODO check if dir exists
       
-      write_all_materials(dir_name)
+      materials_file = write_all_materials(dir_name)
       
       # Write component/Group definitions to seperate files
       
       # Write all component/group instances to a file
       
-      write_all_faces(dir_name)
+      faces_file = write_all_faces(dir_name)
+
+      return materials_file, faces_file
     end
     
     def self.write_all_materials(dir_name)
@@ -19,13 +21,15 @@ module Firefly
       materials_file = File.join(dir_name, "materials.rad")
       
       File.open(materials_file, 'w') do |file|
-        file.write(RadMaterial.default_material)
+        file.write(RadMaterial.default)
         
         model.materials.each do |m|
           mat = RadMaterial.plastic(m.name, m.color, 0, 0)
           file.write(mat)
         end
       end
+
+      return materials_file
     end
     
     def self.write_all_faces(dir_name)    
@@ -45,6 +49,8 @@ module Firefly
           file.write(polygon)
         end
       end
+
+      return faces_file
     end
     
     def self.face_material_name(face)
