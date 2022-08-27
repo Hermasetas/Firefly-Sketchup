@@ -1,10 +1,6 @@
-# Gensky -ang 0 0 -c -B 100
 # Cloudy sky with horizontal diffuse irradiance of 100
 
-void brightfunc skyfunc
-2 skybr skybright.cal
-0
-3 2 4.09e+01 6.37e+00
+!gensky -ang 0 0 -c -B 100
 
 skyfunc glow skyglow
 0

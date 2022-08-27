@@ -1,0 +1,11 @@
+.slider {
+    display: block;
+    width: 100%;
+}
+
+#datetime_div {
+}
+
+#datetime_div input{
+    width: 15%;
+}

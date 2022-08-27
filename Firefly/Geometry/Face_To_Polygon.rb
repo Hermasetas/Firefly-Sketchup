@@ -4,7 +4,7 @@ module Firefly
 
     def self.face_to_polygon(face)
       # If face has no inner loops return it
-      return face.vertices.map(&position) if face.loops.count == 1
+      return face.vertices.map(&:position) if face.loops.count == 1
 
       mesh = face.mesh
 

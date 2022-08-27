@@ -9,7 +9,7 @@ module Firefly
       # Convert to metric and round
       vp = MathUtil.convert_point_to_metric(camera.eye).join(' ')
       vd = MathUtil.round_vector(camera.direction).join(' ')
-      vu = MathUtil.roundVector(camera.up).join(' ')
+      vu = MathUtil.round_vector(camera.up).join(' ')
 
       fov = camera.fov * 2
       width = view.vpwidth

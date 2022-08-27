@@ -82,7 +82,7 @@ module Firefly
       p.to_a.map { |v| convert_to_metric v }
     end
 
-    def round_vector(v)
+    def self.round_vector(v)
       v.to_a.map { |n| n.round(3) }
     end
   end

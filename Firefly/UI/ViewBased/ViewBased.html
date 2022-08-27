@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="ViewBased.css">
+</head>
+<body onload="initUI()">
+    <p>View Based Rendering</p>
+
+    <!--Dropdown?-->
+    <label for="param_slider">Quality:</label>
+    <input id="param_slider" class="slider" type="range" min="0" max="4" value="2">
+    <p>Min - Fast - Accu - Accu+ - Max</p>
+    
+    <hr>
+    <input type="checkbox" id="sky_checkbox">
+    Generate Sky?
+    <br>
+    City:
+    <select id="city_select">
+        <option>Aarhus</option>
+        <option>Copenhagen</option>
+    </select>
+    <br>
+    Lat:
+    <input type="number" min="-180" max="180" value="0" size="2">
+
+    Long:
+    <input type="number" min="-90" max="90" value="0" size="2">
+
+    Timezone:
+    <select id="timezone_select"></select>
+    <br>
+
+    Date and time:
+    <div id="datetime_div">
+        <select id="hour_select"></select>
+        :
+        <select id="minute_select"></select>
+        <br>
+        <select id="day_select"></select>
+        /
+        <select id="month_select"></select>
+        /
+        <select id="year_select"></select>
+    </div>
+    <hr>
+
+    <br>
+    <br>
+    <br>
+    <button onclick="runPerspectiveRendering()">Run!</button>
+    
+    <script src="ViewBased.js"></script>
+</body>

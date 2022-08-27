@@ -1,6 +1,7 @@
 module Firefly
   # A module with handy component methods
   module ComponentUtil
+    # DEPRECATED
     def self.calc_all_definition_levels(definitions)
       levels = Hash.new(0)
 
@@ -14,6 +15,7 @@ module Firefly
       levels
     end
 
+    # DEPRECATED
     def self.calc_definition_levels(defi, levels, current_level)
       levels[defi] = [levels[defi], current_level].max
 

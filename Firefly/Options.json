@@ -1,0 +1,22 @@
+{
+    "rad_params": [
+        "",
+        "-ps 8 -pt .15 -pj .6 -pm 0 -pd 0 -dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01",
+        "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 2 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
+        "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 4 -aa .05 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
+        "-ps 1 -pt 0 -pj 1 -pm 1 -pd 0 -dj 1 -ds .05 -dt 0 -dc 1 -dr 6 -dp 0 -ss 64 -st 0 -aw 1 -ab 8 -aa 0 -ar 0 -ad 8192 -as 2048 -ms .01 -lr 16 -lw 0"
+    ],
+
+    "cities": {
+        "Aarhus":       { "time_zone": "+1", "lat": 56.15, "long": 10.18 },
+        "Copenhagen":   { "time_zone": "+1", "lat": 55.69, "long": 12.56 },
+        "Oslo":         { "time_zone": "+1", "lat": 59.92, "long": 10.74 },
+        "Stockholm":    { "time_zone": "+1", "lat": 59.33, "long": 18.07 },
+        "Berlin":       { "time_zone": "+1", "lat": 52.52, "long": 13.39 },
+        "Brussels":     { "time_zone": "+1", "lat": 50.85, "long": 4.37 },
+        "Rome":         { "time_zone": "+1", "lat": 41.89, "long": 12.50 },
+        "New York":     { "time_zone": "-5", "lat": 44.77, "long": -73.98 },
+        "Beijing":      { "time_zone": "+8", "lat": 39.92, "long": 116.40 },
+        "New Delhi":    { "time_zone": "+5.5", "lat": 28.65, "long": 77.21 }
+      }
+}
