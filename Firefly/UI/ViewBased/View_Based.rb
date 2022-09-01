@@ -18,10 +18,9 @@ module Firefly
       def self.show_dialog
         dialog = create_dialog
 
-        dialog.add_action_callback('run_perspective_rendering') do |context, param_index|
-          rad_params = Options.get_rad_params(param_index.to_i)
+        dialog.add_action_callback('run_perspective_rendering') do |_context, options|
           dir_name = 'C:\Users\herma\Desktop\New folder'
-          PerspectiveRendering.run_simple_rendering dir_name, rad_params 
+          PerspectiveRendering.run_simple_rendering dir_name, options
         end
 
         dialog.show

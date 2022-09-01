@@ -13,7 +13,6 @@ module Firefly
       load f
       puts "#{File.basename(f)} loaded"
     end
-
     nil
   end
 end

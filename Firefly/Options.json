@@ -1,4 +1,5 @@
 {
+    //Todo: Pfilt params
     "rad_params": [
         "",
         "-ps 8 -pt .15 -pj .6 -pm 0 -pd 0 -dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01",

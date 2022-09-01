@@ -2,9 +2,44 @@ document.addEventListener("load", initUI);
 
 
 function runPerspectiveRendering() {
-    paramIndex = document.getElementById('param_slider').value;
-    sketchup.run_perspective_rendering(paramIndex);
-    console.log(`Running: run_perspective_rendering(${paramIndex})`)
+    paramIndex = getElementValue('param_slider');
+    sky_options = getSkyOptions();
+
+    options = {
+        'params_index': paramIndex,
+        'sky_options': sky_options
+    }
+
+    sketchup.run_perspective_rendering(options);
+    console.log(`Running: run_perspective_rendering(${options})`)
+}
+
+function showSkyDiv() {
+    document.getElementById('sky_div').hidden = !document.getElementById('sky_checkbox').checked
+}
+
+function getSkyOptions() {
+    if (!document.getElementById('sky_checkbox').checked)
+        return null;
+    
+    let sky_options = {
+        'lat': getElementValue('lat_input'),
+        'long': getElementValue('long_input'),
+        'timezone': getElementValue('timezone_select'),
+        'hour': getElementValue('hour_select'),
+        'minute': getElementValue('minute_select'),
+        'day': getElementValue('day_select'),
+        'month': getElementValue('month_select'),
+        'year': getElementValue('year_select'),
+        'type': getElementValue('skytype_select')
+    }
+
+    return sky_options;
+}
+
+
+function getElementValue(id) {
+    return document.getElementById(id).value
 }
 
 function initUI() {
