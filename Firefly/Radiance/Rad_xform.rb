@@ -1,7 +1,12 @@
 module Firefly
-  module RadXform
+  # A module to generate string representations of radiance commands.
+  module RadCommand
+    # Creates a string representation of a xform command.
+    # @param file_name The name of the radiance file to manipulate with xform.
+    # @param transformation A Sketchup::Transformation object.
+    # Note: Non-uniform scaling is not currently supported.
     def self.xform(file_name, transformation)
-      trans = MathUtil.decompose_transformation_matrix transformation.to_a
+      trans = MathUtil.decompose_transformation_matrix transformation
       rx, ry, rz = trans[2].map(&:radians)
       s = trans[1][0].abs
       tx, ty, tz = trans[0].map { |v| MathUtil.convert_to_metric v }

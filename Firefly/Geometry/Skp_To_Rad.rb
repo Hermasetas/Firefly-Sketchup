@@ -74,7 +74,7 @@ module Firefly
             nested_instances.each do |ni|
               name = defintion_name(ni.definition)
               transformation = ni.transformation
-              xform = RadXform.xform name, transformation
+              xform = RadCommand.xform name, transformation
               file.puts xform
             end
           end
@@ -92,7 +92,7 @@ module Firefly
           instances.each do |i|
             file_name = File.join('definitions', defintion_name(i.definition))
             transformation = i.transformation
-            xform = RadXform.xform file_name, transformation
+            xform = RadCommand.xform file_name, transformation
             file.puts xform
           end
         end
