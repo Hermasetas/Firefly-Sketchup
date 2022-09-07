@@ -1,7 +1,10 @@
 module Firefly
   # A module that executes perspective renderings in Radiance
   module PerspectiveRendering
-    def self.run_simple_rendering(dir_name, options)
+    def self.run_rendering(options)
+      Directory.clear_working_dir
+      dir_name = Directory.working_dir
+
       materials_file, faces_file, instances_file = SkpToRad.write_all_to_rad(dir_name)
       view = View.grab_perspective_view
 
@@ -15,6 +18,7 @@ module Firefly
 
       rad_params = Options.rad_params options['params_label']
       command_file = File.join(dir_name, 'render_command.bat')
+      result_file = File.join(Directory.results_dir, 'image.bmp')
 
       File.open(command_file, 'w') do |file|
         file.write "cd /D \"#{dir_name}\" \n"
@@ -22,11 +26,11 @@ module Firefly
         file.write "rpict -t 1 #{rad_params} #{view} scene.oct > image.hdr \n"
         file.write "pfilt image.hdr > imageFilt.hdr \n"
         file.write "pcond -h imageFilt.hdr > imageCond.hdr \n"
-        file.write "ra_bmp imageCond.hdr image.bmp \n"
+        file.write "ra_bmp imageCond.hdr #{result_file} \n"
       end
 
       # Setup wait for result
-      ResultHandler.await_image File.join(dir_name, 'image.bmp')
+      ResultHandler.await_image result_file
 
       # Run command
       UI.openURL("file://#{command_file}")

@@ -24,8 +24,7 @@ module Firefly
             next
           end
 
-          dir_name = 'C:/Users/herma/Desktop/New folder'
-          PerspectiveRendering.run_simple_rendering dir_name, options
+          PerspectiveRendering.run_rendering options
         end
 
         dialog.show
