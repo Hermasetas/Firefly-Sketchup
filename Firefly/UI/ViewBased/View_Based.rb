@@ -19,7 +19,12 @@ module Firefly
         dialog = create_dialog
 
         dialog.add_action_callback('run_perspective_rendering') do |_context, options|
-          dir_name = 'C:\Users\herma\Desktop\New folder'
+          if options['params_label'] == 'Max' &&
+             UI.messagebox('Warning, max render can be very slow!', MB_OKCANCEL) == IDCANCEL
+            next
+          end
+
+          dir_name = 'C:/Users/herma/Desktop/New folder'
           PerspectiveRendering.run_simple_rendering dir_name, options
         end
 

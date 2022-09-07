@@ -3,10 +3,11 @@ document.addEventListener("load", initUI);
 
 function runPerspectiveRendering() {
     paramIndex = getElementValue('param_slider');
+    params_label = ['Min', 'Fast', 'Accu', 'Accu+', 'Max'][paramIndex];
     sky_options = getSkyOptions();
 
     options = {
-        'params_index': paramIndex,
+        'params_label': params_label,
         'sky_options': sky_options
     }
 

@@ -8,10 +8,10 @@ module Firefly
       JSON.parse s
     end
 
-    def self.rad_params(index)
+    def self.rad_params(id)
       # TODO: Super sampling on higher levels eg pfilt -x /2 -y /2
       json = read_options_file
-      json['rad_params'][index]
+      json['rad_params'][id]
     end
 
     def self.all_cities

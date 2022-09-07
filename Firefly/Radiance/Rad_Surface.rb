@@ -15,8 +15,8 @@ module Firefly
       s2 = '0'
       s3 = '0'
       s4 = "#{verticies.length * 3} #{verticies.each { |p| p.join(' ') }.join(' ')}"
-  
-      "#{[s1, s2, s3, s4].join("\n")} \n"
+
+      "#{[s1, s2, s3, s4].join("\n")} \n\n"
     end
 
     # Creates a string representing a Radiance cylinder

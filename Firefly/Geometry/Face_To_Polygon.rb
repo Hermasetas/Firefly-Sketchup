@@ -35,8 +35,8 @@ module Firefly
       loops.each_with_index do |loop, i|
         indices = []
 
-        loop.vertices.each do |v|
-          index = mesh.point_index(v.position) - 1 # mesh indices starts at 1
+        loop.vertices.each do |value|
+          index = mesh.point_index(value.position) - 1 # mesh indices starts at 1
 
           indices << index
           point_map[index] = i

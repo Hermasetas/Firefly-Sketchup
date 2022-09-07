@@ -18,15 +18,25 @@ module Firefly
         skyfunc glow skyglow
         0
         0
-        4 1 1 1 0
+        4 .85 1.04 1.2 0
 
         skyglow source sky
         0
         0
         4 0 0 1 180
+
+        skyfunc glow groundglow
+        0
+        0
+        4 .8 1.1 .8 0
+
+        groundglow source ground
+        0
+        0
+        4 0 0 -1 180
       SKY
 
-      File.write(file_name, sky_string, 0)
+      File.write(file_name, sky_string, mode: 'w')
     end
   end
 end
