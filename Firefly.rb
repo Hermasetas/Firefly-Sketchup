@@ -8,7 +8,7 @@ module Firefly
   end
 
   def self.reload
-    files = Dir.glob('C:/Users/herma/Documents/GitHub/Firefly-Sketchup/Firefly/**/*.rb')
+    files = Dir['C:/Users/herma/Documents/GitHub/Firefly-Sketchup/Firefly/**/*.rb']
     files.each do |f|
       load f
       puts "#{File.basename(f)} loaded"
