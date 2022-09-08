@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="ImageResult.css">
+</head>
+<body onload="initUI()">
+    Image based results
+
+    <select id="file_select"></select>
+
+    <select id="type_select">
+        <option>Human Conditioned</option>
+        <option>False Color</option>
+        <!--option>False Color Overlay</option-->
+        <option>Raw Image</option>
+    </select>
+    <br>
+    <button id="run_button" onclick="showImage()">Show image!</button>
+    
+    <script src="ImageResult.js"></script>
+</body>

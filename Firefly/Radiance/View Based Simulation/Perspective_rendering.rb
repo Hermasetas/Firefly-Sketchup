@@ -18,15 +18,15 @@ module Firefly
 
       rad_params = Options.rad_params options['params_label']
       command_file = File.join(dir_name, 'render_command.bat')
-      result_file = File.join(Directory.results_dir, 'image.bmp')
+
+      t = Time.now
+      result_name = "#{t.day}-#{t.month} #{t.hour}-#{t.min}-#{t.sec} simple-render.hdr"
+      result_file = File.join(Directory.results_dir, result_name)
 
       File.open(command_file, 'w') do |file|
-        file.write "cd /D \"#{dir_name}\" \n"
-        file.write "oconv \"#{materials_file}\" \"#{faces_file}\" \"#{instances_file}\" #{sky_file}> scene.oct \n"
-        file.write "rpict -t 1 #{rad_params} #{view} scene.oct > image.hdr \n"
-        file.write "pfilt image.hdr > imageFilt.hdr \n"
-        file.write "pcond -h imageFilt.hdr > imageCond.hdr \n"
-        file.write "ra_bmp imageCond.hdr #{result_file} \n"
+        file.puts "cd /D \"#{dir_name}\""
+        file.puts "oconv \"#{materials_file}\" \"#{faces_file}\" \"#{instances_file}\" #{sky_file}> scene.oct"
+        file.puts "rpict -t 1 #{rad_params} #{view} scene.oct > \"#{result_file}\""
       end
 
       # Setup wait for result

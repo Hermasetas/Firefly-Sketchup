@@ -7,9 +7,67 @@ module Firefly
           UI.stop_timer timer_id
           UI.messagebox('Image done!')
 
-          system("explorer /select,\"#{file_name.gsub('/', '\\')}\"")
+          # system("explorer /select,\"#{file_name.gsub('/', '\\')}\"")
         end
       end
+    end
+
+    def self.pcond_image(file_name)
+      Directory.clear_working_dir
+      working_dir = Directory.working_dir
+
+      result_file = File.join(Directory.results_dir, file_name)
+      command_file = File.join(working_dir, 'command.bat')
+
+      File.open(command_file, 'w') do |file|
+        file.puts "cd /D \"#{working_dir}\""
+        file.puts "pfilt \"#{result_file}\" > pfilt_image.hdr"
+        file.puts 'pcond -h pfilt_image.hdr pcond_image.hdr'
+        file.puts 'ra_bmp pcond_image.hdr image.bmp'
+        file.puts 'image.bmp'
+      end
+
+      UI.openURL("file://#{command_file}")
+
+      File.join(working_dir, 'image.bmp')
+    end
+
+    def self.false_color_image(file_name)
+      Directory.clear_working_dir
+      working_dir = Directory.working_dir
+
+      result_file = File.join(Directory.results_dir, file_name)
+      command_file = File.join(working_dir, 'command.bat')
+
+      File.open(command_file, 'w') do |file|
+        file.puts "cd /D \"#{working_dir}\""
+        file.puts "falsecolor -i \"#{result_file}\" > falsecolor_image.hdr"
+        file.puts 'ra_bmp falsecolor_image.hdr image.bmp'
+        file.puts 'image.bmp'
+      end
+
+      UI.openURL("file://#{command_file}")
+
+      File.join(working_dir, 'image.bmp')
+    end
+
+    def self.raw_image(file_name)
+      Directory.clear_working_dir
+      working_dir = Directory.working_dir
+
+      result_file = File.join(Directory.results_dir, file_name)
+      command_file = File.join(working_dir, 'command.bat')
+
+      File.open(command_file, 'w') do |file|
+        file.puts "cd /D \"#{working_dir}\""
+        file.puts "pfilt \"#{result_file}\" > pfilt_image.hdr"
+        file.puts 'ra_bmp pfilt_image.hdr image.bmp'
+        file.puts 'image.bmp'
+      end
+
+      UI.openURL("file://#{command_file}")
+
+      File.join(working_dir, 'image.bmp')
     end
   end
 end
