@@ -13,7 +13,7 @@ module Firefly
       meridian = -15 * timezone.to_f
 
       sky_string = <<~SKY
-        !gensky #{month} #{day} #{hour}:#{minute} -y #{year} -a #{lat} -o #{long} -m #{meridian} #{type}
+        !gensky #{month} #{day} #{hour}:#{minute} -y #{year} -a #{lat} -o #{-long} -m #{meridian} #{type}
 
         skyfunc glow skyglow
         0

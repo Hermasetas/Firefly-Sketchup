@@ -27,6 +27,17 @@ module Firefly
           PerspectiveRendering.run_rendering options
         end
 
+        dialog.add_action_callback('get_city') do |_context, city|
+          values = Options.city city
+          values = values.to_s.gsub('=>', ':')
+          dialog.execute_script "updateCity(#{values})"
+        end
+
+        dialog.add_action_callback('get_city_list') do |_context|
+          cities = Options.all_cities.keys.sort
+          dialog.execute_script "updateCitySelect(#{cities})"
+        end
+
         dialog.show
       end
     end

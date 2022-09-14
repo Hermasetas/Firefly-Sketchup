@@ -1,18 +1,34 @@
-document.addEventListener("load", initUI);
-
-
 function runPerspectiveRendering() {
     paramIndex = getElementValue('param_slider');
     params_label = ['Min', 'Fast', 'Accu', 'Accu+', 'Max'][paramIndex];
     sky_options = getSkyOptions();
-
+    
     options = {
         'params_label': params_label,
         'sky_options': sky_options
     }
-
+    
     sketchup.run_perspective_rendering(options);
     console.log(`Running: run_perspective_rendering(${options})`)
+}
+
+function updateCity(values) {
+    if (values == null) {
+        let city = getElementValue('city_select');
+        sketchup.get_city(city);
+    }
+    else {
+        setElementValue('lat_input', values.lat);
+        setElementValue('long_input', values.long);
+
+        let tzs = document.getElementById('timezone_select');
+        for (let i = 0; i < tzs.length; i++) {
+            if (values.time_zone == tzs.options[i].text) {
+                tzs.selectedIndex = i;
+                break;
+            }
+        }
+    }
 }
 
 function showSkyDiv() {
@@ -34,13 +50,17 @@ function getSkyOptions() {
         'year': getElementValue('year_select'),
         'type': getElementValue('skytype_select')
     }
-
+    
     return sky_options;
 }
 
 
 function getElementValue(id) {
     return document.getElementById(id).value
+}
+
+function setElementValue(id, value) {
+    document.getElementById(id).value = value;
 }
 
 function initUI() {
@@ -50,21 +70,23 @@ function initUI() {
     initSelect("month_select", 1, 13, 1, 0);
     initSelect("year_select", 2010, 2030, 1, 10);
 
-    //Timezones 
-    let timezone_select = document.getElementById("timezone_select");
-    for (let i = -12; i <= 14 ; i++) {
-        let option = document.createElement("option");
-        let s = Math.abs(i).toString();
-        s = padStart(s, 2, "0");
-        if (i < 0)
-            option.text = `UTC-${s}`;
-        else
-            option.text = `UTC+${s}`;
-        
-        option.value = i;
-        timezone_select.add(option);
+    document.getElementById('timezone_select').selectedIndex = 14;
+
+    updateCitySelect();
+}
+
+function updateCitySelect(cities) {
+    if(cities == null) {
+        sketchup.get_city_list();
     }
-    timezone_select.selectedIndex = 12;
+    else {
+        let city_select = document.getElementById('city_select');
+        for (const city of cities) {
+            let option = document.createElement('option');
+            option.text = city;
+            city_select.add(option);
+        }
+    }
 }
 
 function initSelect(id, start, end, inc, selectedIndex) {
@@ -81,7 +103,7 @@ function initSelect(id, start, end, inc, selectedIndex) {
 function padStart(s, len, pad) {
     n_pad = len - s.length;
     if (n_pad < 1)
-        return s;
+    return s;
     else
-        return pad.repeat(n_pad) + s;
+    return pad.repeat(n_pad) + s;
 }

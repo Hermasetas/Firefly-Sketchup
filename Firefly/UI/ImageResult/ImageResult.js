@@ -1,9 +1,4 @@
 function initUI() {
-    let file_select = document.getElementById('file_select');
-    let option = document.createElement('option');
-    option.text = 'Hej';
-    file_select.add(option);
-
     sketchup.get_result_files();
 }
 
