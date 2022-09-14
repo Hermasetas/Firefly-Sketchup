@@ -1,13 +1,27 @@
 {
-    //Todo: Pfilt params
     "rad_params": {
-        "Min":      "",
-        "Fast":     "-ps 8 -pt .15 -pj .6 -pm 0 -pd 0 -dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01",
-        "Accu":     "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 2 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
-        "Accu+":    "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 4 -aa .05 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
-        "Max":      "-ps 1 -pt 0 -pj 1 -pm 1 -pd 0 -dj 1 -ds .05 -dt 0 -dc 1 -dr 6 -dp 0 -ss 64 -st 0 -aw 1 -ab 8 -aa 0 -ar 0 -ad 8192 -as 2048 -ms .01 -lr 16 -lw 0"
+        "Min": {
+            "rpict": "",
+            "pfilt": ""
+        },
+        "Fast":{
+            "rpict": "-ps 8 -pt .15 -pj .6 -pm 0 -pd 0 -dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01",
+            "pfilt": ""
+        },
+        "Accu": {
+            "rpict": "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 2 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
+            "pfilt": {"sampling": 2}
+        },
+        "Accu+": {
+            "rpict": "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 4 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
+            "pfilt": {"sampling": 3}
+        },
+        "Max": {
+            "rpict": "-ps 1 -pt 0 -pj 1 -pm 1 -pd 0 -dj 1 -ds .05 -dt 0 -dc 1 -dr 6 -dp 0 -ss 64 -st 0 -aw 1 -ab 8 -aa 0 -ar 0 -ad 8192 -as 2048 -ms .01 -lr 16 -lw 0",
+            "pfilt": ""
+        }
     },
-
+    
     "cities": {
         "Aarhus":       { "time_zone": "UTC+01:00", "lat": 56.15,  "long": 10.18  },
         "Copenhagen":   { "time_zone": "UTC+01:00", "lat": 55.69,  "long": 12.56  },
@@ -22,6 +36,7 @@
         "London":       { "time_zone": "UTC+00:00", "lat": 51.50,  "long": 0      },
         "Johannesburg": { "time_zone": "UTC+02:00", "lat": -26.21, "long": 28.03  },
         "Brasilia":     { "time_zone": "UTC-03:00", "lat": -15.81, "long": -47.92 },
-        "Los Angeles":  { "time_zone": "UTC-08:00", "lat": 34.06,  "long": -118.32}
-      }
+        "Los Angeles":  { "time_zone": "UTC-08:00", "lat": 34.06,  "long": -118.32},
+        "Cairo":        { "time_zone": "UTC+02:00", "lat": 30.05,  "long": 31.22  }
+    }
 }
