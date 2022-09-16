@@ -22,8 +22,6 @@ function updateFileSelect(resultFiles) {
         let option = document.createElement('option');
         option.text = 'No result files found';
         select.add(option);
-
-        document.getElementById('run_button').disabled = true;
     }
 
     for (const rf of resultFiles) {

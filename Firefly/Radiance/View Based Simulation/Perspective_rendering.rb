@@ -16,7 +16,7 @@ module Firefly
         sky_file = ''
       end
 
-      rad_params = Options.rad_params options['params_label']
+      rpict_params = Options.rpict_params options['params_label']
       command_file = File.join(dir_name, 'render_command.bat')
 
       t = Time.now
@@ -26,7 +26,7 @@ module Firefly
       File.open(command_file, 'w') do |file|
         file.puts "cd /D \"#{dir_name}\""
         file.puts "oconv \"#{materials_file}\" \"#{faces_file}\" \"#{instances_file}\" #{sky_file}> scene.oct"
-        file.puts "rpict -t 1 #{rad_params} #{view} scene.oct > \"#{result_file}\""
+        file.puts "rpict -t 1 #{rpict_params} #{view} scene.oct > \"#{result_file}\""
       end
 
       # Setup wait for result

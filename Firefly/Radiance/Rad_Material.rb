@@ -11,18 +11,45 @@ module Firefly
       g = (color.green / 255.0).round(3)
       b = (color.blue / 255.0).round(3)
 
-      s1 = "void plastic \"#{name}\""
-      s2 = '0'
-      s3 = '0'
-      s4 = "5 #{r} #{g} #{b} #{specularity} #{roughness}"
-
-      "#{[s1, s2, s3, s4].join("\n")} \n\n"
+      <<~PLASTIC
+        void plastic "#{name}"
+        0
+        0
+        5 #{r} #{g} #{b} #{specularity} #{roughness}
+      PLASTIC
     end
 
     # Creates a default plastic material in 50% grey.
     def self.default
-      "void plastic default\n0\n0\n5 0.5 0.5 0.5 0 0 \n\n"
-      # "void light default\n0\n0\n3 5 5 5 \n\n"
+      <<~DEFAULT
+        void plastic default
+        0
+        0
+        5 0.5 0.5 0.5 0 0
+      DEFAULT
+    end
+
+    def self.glass_from_color(name, color, alpha)
+      trans = 1 - alpha
+      rt = (color.red / 255.0) * trans
+      gt = (color.green / 255.0) * trans
+      bt = (color.blue / 255.0) * trans
+
+      glass name, rt, gt, bt
+    end
+
+    def self.glass(name, r_trans, g_trans, b_trans)
+      # Transmittance to transmissivity (Simplified)
+      r = (r_trans * 1.09).round(3)
+      b = (b_trans * 1.09).round(3)
+      g = (g_trans * 1.09).round(3)
+
+      <<~GLASS
+        void glass "#{name}"
+        0
+        0
+        3 #{r} #{g} #{b}
+      GLASS
     end
   end
 end

@@ -3,15 +3,16 @@ require 'json'
 module Firefly
   module Options
     def self.read_options_file
+      return @options if @options
+
       path = File.join(__dir__, 'Options.json')
       s = File.read(path)
-      JSON.parse s
+      @options = JSON.parse s
     end
 
-    def self.rad_params(id)
-      # TODO: Super sampling on higher levels eg pfilt -x /2 -y /2
+    def self.rpict_params(id)
       json = read_options_file
-      json['rad_params'][id]
+      json['rad_params'][id]['rpict']
     end
 
     def self.all_cities

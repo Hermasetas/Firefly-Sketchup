@@ -28,7 +28,12 @@ module Firefly
           file.write(RadMaterial.default)
 
           model.materials.each do |m|
-            mat = RadMaterial.plastic(m.name, m.color, 0, 0)
+            mat = if m.alpha == 1
+                    RadMaterial.plastic(m.name, m.color, 0, 0)
+                  else
+                    RadMaterial.glass_from_color(m.name, m.color, m.alpha)
+                  end
+
             file.write(mat)
           end
         end
