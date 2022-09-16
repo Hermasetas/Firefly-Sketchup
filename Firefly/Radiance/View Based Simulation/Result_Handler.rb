@@ -5,7 +5,11 @@ module Firefly
       timer_id = UI.start_timer(1, true) do
         if File.exist?(file_name) && File.mtime(file_name) > start_time
           UI.stop_timer timer_id
-          UI.messagebox('Image done!')
+
+          note = UI::Notification.new(Firefly.extension, 'Image done!')
+          note.on_accept('Show Image Dialog') { Dialog::ImageResult.show_dialog }
+          note.on_dismiss('Dismiss') {}
+          note.show
 
           # system("explorer /select,\"#{file_name.gsub('/', '\\')}\"")
         end
@@ -27,7 +31,9 @@ module Firefly
         file.puts 'image.bmp'
       end
 
-      UI.openURL("file://#{command_file}")
+      SilentCommand.run_silently command_file
+
+      # TODO: Await file and show loading animation
 
       File.join(working_dir, 'image.bmp')
     end
@@ -46,7 +52,9 @@ module Firefly
         file.puts 'image.bmp'
       end
 
-      UI.openURL("file://#{command_file}")
+      SilentCommand.run_silently command_file
+
+      # TODO: Await file and show loading animation
 
       File.join(working_dir, 'image.bmp')
     end
@@ -65,7 +73,9 @@ module Firefly
         file.puts 'image.bmp'
       end
 
-      UI.openURL("file://#{command_file}")
+      SilentCommand.run_silently command_file
+
+      # TODO: Await file and show loading animation
 
       File.join(working_dir, 'image.bmp')
     end
