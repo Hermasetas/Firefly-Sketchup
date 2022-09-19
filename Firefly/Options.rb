@@ -15,6 +15,11 @@ module Firefly
       json['rad_params'][id]['rpict']
     end
 
+    def self.pfilt_params(id)
+      json = read_options_file
+      json['rad_params'][id]['pfilt']
+    end
+
     def self.all_cities
       json = read_options_file
       json['cities']
