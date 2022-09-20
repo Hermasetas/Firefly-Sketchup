@@ -15,6 +15,10 @@ module Firefly
         create_temp_dir 'firefly-results'
       end
 
+      def preview_dir
+        create_temp_dir 'firefly-previews'
+      end
+
       private
 
       def create_temp_dir(dir_name)
