@@ -20,13 +20,18 @@ module Firefly
       command_file = File.join(dir_name, 'render_command.bat')
 
       t = Time.now
-      result_name = "#{t.day}-#{t.month} #{t.hour}-#{t.min}-#{t.sec} simple-render.hdr"
-      result_file = File.join(Directory.results_dir, result_name)
+      result_name = "#{t.day}-#{t.month} #{t.hour}-#{t.min}-#{t.sec} simple-render"
+      result_file = File.join(Directory.results_dir, "#{result_name}.hdr")
+      preview_file = File.join(Directory.preview_dir, "#{result_name}.bmp")
 
       File.open(command_file, 'w') do |file|
         file.puts "cd /D \"#{dir_name}\""
         file.puts "oconv \"#{materials_file}\" \"#{faces_file}\" \"#{instances_file}\" #{sky_file}> scene.oct"
         file.puts "rpict -t 1 #{rpict_params} #{view} scene.oct > \"#{result_file}\""
+
+        file.puts 'echo "Generating preview...'
+        file.puts "pfilt -x 250 -p 1 \"#{result_file}\" > preview.hdr"
+        file.puts "ra_bmp preview.hdr \"#{preview_file}\""
       end
 
       # Setup wait for result
