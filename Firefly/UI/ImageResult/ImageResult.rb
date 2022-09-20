@@ -14,6 +14,12 @@ module Firefly
             dialog.execute_script "updateFileSelect(#{result_files})"
           end
 
+          dialog.add_action_callback('get_preview') do |_context, file|
+            preview_file = "#{File.basename(file, '.hdr')}.bmp"
+            preview_file = File.join(Directory.preview_dir, preview_file)
+            dialog.execute_script "updatePreview('#{preview_file}')"
+          end
+
           dialog.show
         end
 

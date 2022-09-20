@@ -4,10 +4,14 @@
 </head>
 <body onload="initUI()">
     Image based results
-
+    
     <select id="file_select"></select>
     <button id="update_button" onclick="sketchup.get_result_files()">Update</button>
-
+    <br>
+    
+    <img id="preview_img" onerror="this.src = 'Kitten.png'">
+    
+    <br>
     <select id="type_select">
         <option>Human Conditioned</option>
         <option>False Color</option>

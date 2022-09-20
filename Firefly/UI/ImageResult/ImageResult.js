@@ -1,5 +1,7 @@
 function initUI() {
     sketchup.get_result_files();
+
+    document.getElementById('file_select').addEventListener('change', e => updatePreview());
 }
 
 function showImage() {
@@ -29,8 +31,21 @@ function updateFileSelect(resultFiles) {
         option.text = rf;
         select.add(option);
     }
+
+    updatePreview();
 }
 
 function getElementValue(id) {
     return document.getElementById(id).value
+}
+
+function updatePreview(file) {
+    if (file == null){
+        let file = getElementValue('file_select');
+        sketchup.get_preview(file);
+    }
+    else {
+        preview_img = document.getElementById('preview_img');
+        preview_img.src = file;
+    }
 }
