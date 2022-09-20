@@ -54,9 +54,27 @@ function getSkyOptions() {
     return sky_options;
 }
 
+function updateSkyOptions(sky_options) {
+    if (!sky_options)
+        return;
+    
+    setElementValue('lat_input', sky_options.lat);
+    setElementValue('long_input', sky_options.long);
+    setElementValue('timezone_select', sky_options.timezone);
+    setElementValue('hour_select', sky_options.hour);
+    setElementValue('minute_select', sky_options.minute);
+    setElementValue('day_select', sky_options.day);
+    setElementValue('month_select', sky_options.month);
+    setElementValue('year_select', sky_options.year);
+    setElementValue('skytype_select', sky_options.type);
+}
 
 function getElementValue(id) {
     return document.getElementById(id).value
+}
+
+function setElementValue(id, value) {
+    document.getElementById(id).value = value;
 }
 
 function setElementValue(id, value) {
@@ -73,6 +91,7 @@ function initUI() {
     document.getElementById('timezone_select').selectedIndex = 14;
 
     updateCitySelect();
+    sketchup.get_prev_sky_options();
 }
 
 function updateCitySelect(cities) {
