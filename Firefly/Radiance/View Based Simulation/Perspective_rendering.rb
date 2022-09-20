@@ -28,7 +28,7 @@ module Firefly
         file.puts "cd /D \"#{dir_name}\""
         file.puts "oconv \"#{materials_file}\" \"#{faces_file}\" \"#{instances_file}\" #{sky_file}> scene.oct"
         file.puts "rpict -t 1 #{rpict_params} #{view} scene.oct > result.hdr"
-        file.puts "move result.hdr \"#{result_file}\""
+        file.puts "copy result.hdr \"#{result_file}\""
 
         file.puts 'echo "Generating preview...'
         file.puts 'pfilt -x 250 -p 1 result.hdr > preview.hdr'
