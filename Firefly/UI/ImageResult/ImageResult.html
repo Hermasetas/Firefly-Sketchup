@@ -12,12 +12,47 @@
     <img id="preview_img" onerror="this.src = 'Kitten.png'">
     
     <br>
-    <select id="type_select">
+    <select id="type_select" onchange="typeChanged()">
         <option>Human Conditioned</option>
         <option>False Color</option>
         <!--option>False Color Overlay</option-->
         <option>Raw Image</option>
     </select>
+    <br>
+
+    <div id="falsecolor_div" hidden="true">
+        <hr>
+        Scale max:
+        <input id="falsecolor_input" type="number" value="1000">
+        <br>
+        Scale color:
+        <label>
+            <input type="radio" name="falsecolor_radio" value="tbo" checked>
+            <img src="Falsecolor_scales/tbo.png" alt="tbo">
+        </label>
+        <label>
+            <input type="radio" name="falsecolor_radio" value="eco">
+            <img src="Falsecolor_scales/eco.png" alt="eco">
+        </label>
+        <label>
+            <input type="radio" name="falsecolor_radio" value="hot">
+            <img src="Falsecolor_scales/hot.png" alt="hot">
+        </label>
+        <label>
+            <input type="radio" name="falsecolor_radio" value="pm3d">
+            <img src="Falsecolor_scales/pm3d.png" alt="pm3d">
+        </label>
+        <label>
+            <input type="radio" name="falsecolor_radio" value="spec">
+            <img src="Falsecolor_scales/spec.png" alt="spec">
+        </label>
+        <label>
+            <input type="radio" name="falsecolor_radio" value="def">
+            <img src="Falsecolor_scales/def.png" alt="def">
+        </label>
+        <hr>
+    </div>
+
     <br>
     <button id="run_button" onclick="showImage()">Show image!</button>
     

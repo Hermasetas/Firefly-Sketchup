@@ -7,7 +7,9 @@ function initUI() {
 function showImage() {
     let options = {
         'file_name': getElementValue('file_select'),
-        'type': getElementValue('type_select')
+        'type': getElementValue('type_select'),
+        'falsecolor_scale': getElementValue('falsecolor_input'),
+        'falsecolor_palette': document.querySelector('[name=falsecolor_radio]:checked').value
     };
 
     sketchup.create_image(options);
@@ -33,6 +35,12 @@ function updateFileSelect(resultFiles) {
     }
 
     updatePreview();
+}
+
+function typeChanged() {
+    let type = getElementValue('type_select');
+    document.getElementById('falsecolor_div').hidden = (type != 'False Color');
+    console.log(type);
 }
 
 function getElementValue(id) {

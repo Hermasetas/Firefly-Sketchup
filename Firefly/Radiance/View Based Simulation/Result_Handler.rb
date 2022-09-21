@@ -38,7 +38,7 @@ module Firefly
       File.join(working_dir, 'image.bmp')
     end
 
-    def self.false_color_image(file_name)
+    def self.false_color_image(file_name, scale, palette)
       Directory.clear_working_dir
       working_dir = Directory.working_dir
 
@@ -47,7 +47,7 @@ module Firefly
 
       File.open(command_file, 'w') do |file|
         file.puts "cd /D \"#{working_dir}\""
-        file.puts "falsecolor -i \"#{result_file}\" > falsecolor_image.hdr"
+        file.puts "falsecolor -i \"#{result_file}\" -s #{scale} -pal #{palette} > falsecolor_image.hdr"
         file.puts 'ra_bmp falsecolor_image.hdr image.bmp'
         file.puts 'image.bmp'
       end

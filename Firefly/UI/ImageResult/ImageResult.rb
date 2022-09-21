@@ -61,7 +61,7 @@ module Firefly
         end
 
         def create_false_color_image(options)
-          ResultHandler.false_color_image options['file_name']
+          ResultHandler.false_color_image(*options.values_at('file_name', 'falsecolor_scale', 'falsecolor_palette'))
         end
 
         def create_raw_image(options)
