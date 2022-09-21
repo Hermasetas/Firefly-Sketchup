@@ -1,5 +1,3 @@
-require JSON
-
 module Firefly
   module Attributes
     def self.save_sky_options(sky_options)
