@@ -6,3 +6,7 @@
 #datetime_div input{
     width: 15%;
 }
+
+label {
+    display: block;
+}

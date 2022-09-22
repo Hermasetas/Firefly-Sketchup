@@ -1,15 +1,17 @@
 function runPerspectiveRendering() {
-    paramIndex = getElementValue('param_slider');
-    params_label = ['Min', 'Fast', 'Accu', 'Accu+', 'Max'][paramIndex];
-    sky_options = getSkyOptions();
+    let paramIndex = getElementValue('param_slider');
+    let params_label = ['Min', 'Fast', 'Accu', 'Accu+', 'Max'][paramIndex];
+    let sky_options = getSkyOptions();
+    let render_type = document.querySelector('[name=render_type]:checked').value;
     
     options = {
         'params_label': params_label,
-        'sky_options': sky_options
+        'sky_options': sky_options,
+        'render_type': render_type
     }
     
+    console.log(`Running: run_perspective_rendering(${JSON.stringify(options)})`)
     sketchup.run_perspective_rendering(options);
-    console.log(`Running: run_perspective_rendering(${options})`)
 }
 
 function updateCity(values) {

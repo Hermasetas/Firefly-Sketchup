@@ -90,10 +90,16 @@
         </select>
     </div>
     <hr>
-    
-    <br>
-    <br>
-    <br>
+    <label>
+        <input type="radio" name="render_type" value="luminance" checked>
+        Luminance [cd/m<sup>2</sup>]
+    </label>
+    <label>
+        <input type="radio" name="render_type" value="illuminance">
+        Illuminance [Lux]
+    </label>
+
+    <hr>
     <button onclick="runPerspectiveRendering()">Run!</button>
     
     <script src="ViewBased.js"></script>

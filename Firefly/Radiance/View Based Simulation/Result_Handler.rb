@@ -3,6 +3,8 @@ module Firefly
     def self.await_image(file_name)
       start_time = Time.now
       timer_id = UI.start_timer(1, true) do
+        # TODO: Stop timer if calculation is stopped, use a check file
+
         if File.exist?(file_name) && File.mtime(file_name) > start_time
           UI.stop_timer timer_id
 
@@ -10,8 +12,6 @@ module Firefly
           note.on_accept('Show Image Dialog') { Dialog::ImageResult.show_dialog }
           note.on_dismiss('Dismiss') {}
           note.show
-
-          # system("explorer /select,\"#{file_name.gsub('/', '\\')}\"")
         end
       end
     end
@@ -45,9 +45,11 @@ module Firefly
       result_file = File.join(Directory.results_dir, file_name)
       command_file = File.join(working_dir, 'command.bat')
 
+      label = file_name.include?('illuminance') ? 'Lux' : 'cd/m2'
+
       File.open(command_file, 'w') do |file|
         file.puts "cd /D \"#{working_dir}\""
-        file.puts "falsecolor -i \"#{result_file}\" -s #{scale} -pal #{palette} > falsecolor_image.hdr"
+        file.puts "falsecolor -i \"#{result_file}\" -s #{scale} -pal #{palette} -l #{label}> falsecolor_image.hdr"
         file.puts 'ra_bmp falsecolor_image.hdr image.bmp'
         file.puts 'image.bmp'
       end
