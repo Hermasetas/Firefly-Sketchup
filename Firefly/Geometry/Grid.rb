@@ -62,7 +62,7 @@ module Firefly
         for l in pts
           for p in l
             if p
-              pm = Math_Util.convert_point_to_metric p
+              pm = MathUtil.convert_point_to_metric p
               file.puts "#{pm.x} #{pm.y} #{pm.z}"
             end
           end
