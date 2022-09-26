@@ -17,7 +17,7 @@ module Firefly
         [materials_file, faces_file, instances_file]
       end
 
-      private #-----------------------------------------------
+      private
 
       def write_all_materials(dir_name)
         model = Sketchup.active_model
