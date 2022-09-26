@@ -1,6 +1,6 @@
 module Firefly
   module Grid
-    
+
     def self.create_grid(face, spacing, height = 0)
       bounds = face.bounds
       x = bounds.min.x
@@ -55,6 +55,19 @@ module Firefly
       end
       
       Sketchup.active_model.commit_operation()
+    end
+
+    def self.grid_to_file(pts, file_name)
+      File.open(file_name, 'w') do |file|
+        for l in pts
+          for p in l
+            if p
+              pm = Math_Util.convert_point_to_metric p
+              file.puts "#{pm.x} #{pm.y} #{pm.z}"
+            end
+          end
+        end
+      end
     end
   end
 end
