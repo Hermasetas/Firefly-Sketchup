@@ -1,5 +1,5 @@
 module Firefly
-  module ResultHandler
+  module ViewResultHandler
     def self.await_image(file_name)
       start_time = Time.now
       timer_id = UI.start_timer(1, true) do
