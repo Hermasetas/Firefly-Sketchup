@@ -8,7 +8,7 @@ module Firefly
     # @return A string representation of a gensky radiance command
     def self.generate_sky_file(file_name, sky_options)
       hour, minute, day, month, year, lat, long, timezone, type =
-        sky_options.values_at('hour', 'minute', 'day', 'month', 'year', 'lat', 'long', 'timezone', 'type')
+      sky_options.values_at('hour', 'minute', 'day', 'month', 'year', 'lat', 'long', 'timezone', 'type')
 
       meridian = -15 * timezone.to_f
       long = -long.to_f
@@ -35,6 +35,29 @@ module Firefly
         0
         0
         4 0 0 -1 180
+      SKY
+
+      File.write(file_name, sky_string, mode: 'w')
+    end
+
+    def self.generate_daylight_factor_sky(file_name)
+      sky_string = <<~SKY
+      !gensky -ang 0 0 -c -B 100
+
+      skyfunc glow skyglow
+      0
+      0
+      4 1 1 1 0
+
+      skyglow source sky
+      0
+      0
+      4 0 0 1 180
+
+      skyglow source ground
+      0
+      0
+      4 0 0 -1 180
       SKY
 
       File.write(file_name, sky_string, mode: 'w')
