@@ -3,13 +3,13 @@ module Firefly
   module PerspectiveRendering
     def self.run_rendering(options)
       Directory.clear_working_dir
-      dir_name = Directory.working_dir
+      working_dir = Directory.working_dir
 
-      materials_file, faces_file, instances_file = SkpToRad.write_all_to_rad(dir_name)
+      materials_file, faces_file, instances_file = SkpToRad.write_all_to_rad(working_dir)
       view = View.grab_perspective_view
 
       if options['sky_options']
-        sky_file = File.join(dir_name, 'sky.rad')
+        sky_file = File.join(working_dir, 'sky.rad')
         RadSky.generate_sky_file sky_file, options['sky_options']
         sky_file = "\"#{sky_file}\""
       else
@@ -18,7 +18,7 @@ module Firefly
 
       rpict_params = Options.rpict_params options['params_label']
       render_type = options['render_type'] == 'illuminance' ? '-i' : ''
-      command_file = File.join(dir_name, 'render_command.bat')
+      command_file = File.join(working_dir, 'render_command.bat')
 
       t = Time.now.to_s.gsub(':', '-')[0..18]
       result_name = "#{t} simple-render #{options['render_type']}"
@@ -26,7 +26,7 @@ module Firefly
       preview_file = File.join(Directory.preview_dir, "#{result_name}.bmp")
 
       File.open(command_file, 'w') do |file|
-        file.puts "cd /D \"#{dir_name}\""
+        file.puts "cd /D \"#{working_dir}\""
         file.puts "oconv \"#{materials_file}\" \"#{faces_file}\" \"#{instances_file}\" #{sky_file}> scene.oct"
         file.puts "rpict -t 1 #{render_type} #{rpict_params} #{view} scene.oct > result.hdr"
         file.puts "copy result.hdr \"#{result_file}\""
@@ -37,7 +37,7 @@ module Firefly
       end
 
       # Setup wait for result
-      ResultHandler.await_image result_file
+      ViewResultHandler.await_image result_file
 
       # Run command
       UI.openURL("file://#{command_file}")
