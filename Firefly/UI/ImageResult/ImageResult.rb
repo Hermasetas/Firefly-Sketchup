@@ -57,15 +57,15 @@ module Firefly
         end
 
         def create_pcond_image(options)
-          ResultHandler.pcond_image options['file_name']
+          ViewResultHandler.pcond_image options['file_name']
         end
 
         def create_false_color_image(options)
-          ResultHandler.false_color_image(*options.values_at('file_name', 'falsecolor_scale', 'falsecolor_palette'))
+          ViewResultHandler.false_color_image(*options.values_at('file_name', 'falsecolor_scale', 'falsecolor_palette'))
         end
 
         def create_raw_image(options)
-          ResultHandler.raw_image options['file_name']
+          ViewResultHandler.raw_image options['file_name']
         end
       end
     end
