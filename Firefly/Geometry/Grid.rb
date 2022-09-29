@@ -1,6 +1,11 @@
 module Firefly
   module Grid
-
+    # Creates a grid of points parallel to the xy plane
+    # A base face determines the size of the grid and which points to include
+    # @param face The face to base the grid on
+    # @param spacing the space between points in meters
+    # @param height The height to offset the points above the face
+    # @return A 2D array of points
     def self.create_grid(face, spacing, height = 0)
       bounds = face.bounds
       x = bounds.min.x
@@ -8,11 +13,11 @@ module Firefly
       z = bounds.min.z
       w = bounds.width
       h = bounds.height
-
+      
       # Meters to inches
-      spacing = spacing.m 
+      spacing = spacing.m
       height = height.m
-
+      
       nx = (w / spacing).ceil
       ny = (h / spacing).ceil
       
@@ -36,27 +41,25 @@ module Firefly
           end
         end
       end
-
+      
       pts
     end
-
+    
     def self.create_cpoints(pts)
       Sketchup.active_model.start_operation("Create points", true)
       
       ents = Sketchup.active_model.active_entities
       g = ents.add_group.entities
-    
-      for l in pts
-        for p in l
-          if p
-            g.add_cpoint(p)
-          end
+      
+      pts.each do |l|
+        l.each do |p|
+          g.add_cpoint(p) if p
         end
       end
       
       Sketchup.active_model.commit_operation()
     end
-
+    
     def self.grid_to_file(pts, file_name)
       File.open(file_name, 'w') do |file|
         for l in pts
