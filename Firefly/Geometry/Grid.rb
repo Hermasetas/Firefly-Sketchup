@@ -13,24 +13,24 @@ module Firefly
       z = bounds.min.z
       w = bounds.width
       h = bounds.height
-      
+
       # Meters to inches
       spacing = spacing.m
       height = height.m
-      
+
       nx = (w / spacing).ceil
       ny = (h / spacing).ceil
-      
+
       pts = []
-      
+
       for i in (0..nx-1) do
         pts << []
-        
+
         for j in (0..ny-1) do
           px = x + spacing * i
           py = y + spacing * j
           p = [px, py, z]
-          
+
           if face.classify_point(p) != Sketchup::Face::PointOutside
             p.x = p.x.round(2)
             p.y = p.y.round(2)
@@ -41,25 +41,25 @@ module Firefly
           end
         end
       end
-      
+
       pts
     end
-    
+
     def self.create_cpoints(pts)
-      Sketchup.active_model.start_operation("Create points", true)
-      
+      Sketchup.active_model.start_operation('Create grid points', true)
+
       ents = Sketchup.active_model.active_entities
       g = ents.add_group.entities
-      
+
       pts.each do |l|
         l.each do |p|
           g.add_cpoint(p) if p
         end
       end
-      
-      Sketchup.active_model.commit_operation()
+
+      Sketchup.active_model.commit_operation
     end
-    
+
     def self.grid_to_file(pts, file_name)
       File.open(file_name, 'w') do |file|
         for l in pts

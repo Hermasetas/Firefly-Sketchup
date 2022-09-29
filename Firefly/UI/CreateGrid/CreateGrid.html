@@ -3,8 +3,19 @@
     <link rel="stylesheet" href="CreateGrid.css">
 </head>
 <body onload="initUI()">
+    Create grid
+    <br>
+    Selected face: 
+    <label id="face_label">Please select a single face</label>
+    <br>
+    Grid spacing in meters:
+    <input type="number" id="spacing_input" value="0.5">
+    <br>
+    Grid offset in meters:
+    <input type="number" id="height_input" value="0">
 
-    <
+    <button id="run_button" onclick="createGrid()" disabled="true">Create grid</button>
+
 
     <script src="CreateGrid.js"></script>
 </body>
