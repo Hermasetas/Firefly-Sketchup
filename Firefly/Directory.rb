@@ -32,6 +32,7 @@ module Firefly
         def onQuit
           FileUtils.remove_dir Directory.working_dir
           FileUtils.remove_dir Directory.results_dir
+          FileUtils.remove_dir Directory.preview_dir
         end
       end
 
