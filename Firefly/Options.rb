@@ -3,11 +3,9 @@ require 'json'
 module Firefly
   module Options
     def self.read_options_file
-      return @options if @options
-
       path = File.join(__dir__, 'Options.json')
       s = File.read(path)
-      @options = JSON.parse s
+      options = JSON.parse s
     end
 
     def self.rpict_params(id)
@@ -18,6 +16,11 @@ module Firefly
     def self.pfilt_params(id)
       json = read_options_file
       json['rad_params'][id]['pfilt']
+    end
+
+    def self.rtrace_params(id)
+      json = read_options_file
+      json['rad_params'][id]['rtrace']
     end
 
     def self.all_cities

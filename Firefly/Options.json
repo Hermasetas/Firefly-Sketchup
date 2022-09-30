@@ -8,22 +8,22 @@
         "Fast":{
             "rpict": "-ps 8 -pt .15 -pj .6 -pm 0 -pd 0 -dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01",
             "pfilt": "",
-            "rtrace": "-ps 8 -pt .15 -pj .6 -pm 0 -pd 0 -dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01"
+            "rtrace": "-dj 0 -ds .5 -dt .5 -dc .25 -dr 1 -dp 64 -ss .3 -st .85 -aw 100 -ab 1 -aa .2 -ar 32 -ad 128 -as 32 -ms 10 -lr 6 -lw .01"
         },
         "Accu": {
             "rpict": "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 2 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
             "pfilt": {"sampling": 2},
-            "rtrace": "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 2 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002"
+            "rtrace": "-dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 2 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002"
         },
         "Accu+": {
             "rpict": "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 4 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002",
             "pfilt": {"sampling": 3},
-            "rtrace": "-ps 4 -pt .05 -pj .9 -pm 1 -pd 0 -dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 4 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002"
+            "rtrace": "-dj .9 -ds .15 -dt .05 -dc .5 -dr 3 -dp 512 -ss 32 -st .15 -aw 10 -ab 4 -aa .1 -ar 256 -ad 1024 -as 512 -ms 1 -lr 8 -lw .002"
         },
         "Max": {
             "rpict": "-ps 1 -pt 0 -pj 1 -pm 1 -pd 0 -dj 1 -ds .05 -dt 0 -dc 1 -dr 6 -dp 0 -ss 64 -st 0 -aw 1 -ab 8 -aa 0 -ar 0 -ad 8192 -as 2048 -ms .01 -lr 16 -lw 0",
             "pfilt": "",
-            "rtrace": "-ps 1 -pt 0 -pj 1 -pm 1 -pd 0 -dj 1 -ds .05 -dt 0 -dc 1 -dr 6 -dp 0 -ss 64 -st 0 -aw 1 -ab 8 -aa 0 -ar 0 -ad 8192 -as 2048 -ms .01 -lr 16 -lw 0"
+            "rtrace": "-dj 1 -ds .05 -dt 0 -dc 1 -dr 6 -dp 0 -ss 64 -st 0 -aw 1 -ab 8 -aa 0 -ar 0 -ad 8192 -as 2048 -ms .01 -lr 16 -lw 0"
         }
     },
     
