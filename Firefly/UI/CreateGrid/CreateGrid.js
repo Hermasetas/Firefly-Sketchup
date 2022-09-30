@@ -14,11 +14,12 @@ function updateFaceLabel(face_id) {
 }
 
 function createGrid() {
-    face_id = document.getElementById('face_label').innerText.substring(8)
-    spacing = getElementValue('spacing_input');
-    height = getElementValue('height_input');
+    let face_id = document.getElementById('face_label').innerText.substring(8)
+    let name = getElementValue('name_input');
+    let spacing = getElementValue('spacing_input');
+    let height = getElementValue('height_input');
 
-    sketchup.create_grid(face_id, spacing, height);
+    sketchup.create_grid(face_id, name, spacing, height);
 }
 
 function getElementValue(id) {

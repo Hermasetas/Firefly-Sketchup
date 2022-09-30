@@ -5,10 +5,10 @@ module Firefly
         def show_dialog
           dialog = create_dialog
 
-          dialog.add_action_callback('create_grid') do |context, face_id, spacing, height|
+          dialog.add_action_callback('create_grid') do |_context, face_id, name, spacing, height|
             face = Sketchup.active_model.find_entity_by_id face_id.to_i
-            grid = Grid.create_grid face, spacing.to_f, height.to_f
-            Grid.create_cpoints grid
+            grid = Grid.create_points face, spacing.to_f, height.to_f
+            Grid.create_grid_group grid, name
           end
 
           dialog.show
