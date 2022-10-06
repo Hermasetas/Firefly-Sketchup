@@ -1,5 +1,5 @@
 module Firefly
-  module SilentCommand
+  module CommandUtil
     def self.run_silently(command_file)
       dir = File.dirname command_file
       silent_file = File.join(dir, 'silent.vbs')
@@ -10,7 +10,8 @@ module Firefly
         file.puts 'Set WshShell = Nothing'
       end
 
-      UI.openURL("file://#{silent_file}")
+      # UI.openURL("file://#{silent_file}")
+      UI.openURL("file://#{command_file}")
     end
   end
 end

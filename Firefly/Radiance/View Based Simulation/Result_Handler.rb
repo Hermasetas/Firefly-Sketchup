@@ -31,7 +31,7 @@ module Firefly
         file.puts 'image.bmp'
       end
 
-      SilentCommand.run_silently command_file
+      CommandUtil.run_silently command_file
 
       # TODO: Await file and show loading animation
 
@@ -54,7 +54,7 @@ module Firefly
         file.puts 'image.bmp'
       end
 
-      SilentCommand.run_silently command_file
+      CommandUtil.run_silently command_file
 
       # TODO: Await file and show loading animation
 
@@ -75,7 +75,7 @@ module Firefly
         file.puts 'image.bmp'
       end
 
-      SilentCommand.run_silently command_file
+      CommandUtil.run_silently command_file
 
       # TODO: Await file and show loading animation
 
