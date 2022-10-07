@@ -14,7 +14,7 @@ module Firefly
 
   def self.puts_all_attributes(ent)
     ent.attribute_dictionaries.each do |dict|
-      puts "#{dict.name}"
+      puts dict.name
       dict.each do |k, v|
         puts "  #{k}: #{v}"
       end
@@ -25,7 +25,7 @@ module Firefly
   unless file_loaded?(__FILE__)
     ex = SketchupExtension.new('Firefly', 'Firefly/Main.rb')
     ex.description = 'Firefly Daylight and Lighting simulations.'
-    ex.creator = 'Hermasetas'
+    ex.creator = 'Mathias Gammelgaard'
     Sketchup.register_extension(ex, true)
     file_loaded(__FILE__)
 
