@@ -11,6 +11,7 @@ module Firefly
         write_all_defintions(dir_name)
 
         instances_file = write_all_instances(dir_name)
+        # TODO: Write groups
 
         faces_file = write_all_faces(dir_name)
 
