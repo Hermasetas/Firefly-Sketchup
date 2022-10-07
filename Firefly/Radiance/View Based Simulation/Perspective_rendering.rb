@@ -40,7 +40,7 @@ module Firefly
       ViewResultHandler.await_image result_file
 
       # Run command
-      UI.openURL("file://#{command_file}")
+      CommandUtil.run command_file
     end
   end
 end
