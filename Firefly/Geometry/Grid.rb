@@ -52,7 +52,7 @@ module Firefly
       def create_grid_group(pts, name)
         Sketchup.active_model.start_operation('Create grid points', true)
 
-        ents = Sketchup.active_model.active_entities
+        ents = Sketchup.active_model.entities
         grid = ents.add_group
         grid.name = name
         ents = grid.entities
