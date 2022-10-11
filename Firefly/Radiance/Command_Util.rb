@@ -20,6 +20,7 @@ module Firefly
     end
 
     # Creates a command to replace a specified keyword in a file with the contents of another file
+    # Note: This writes the result file as UTF8Bom and should be read using [File.read path, encoding: 'bom|utf-8'].
     # @param base_file The file to insert text into
     # @param content_file The file which contents to insert into the base_file
     # @param result_file The path where the result should be saved
