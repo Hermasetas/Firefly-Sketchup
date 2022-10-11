@@ -9,6 +9,9 @@ module Firefly
 
       show_grid_window = UI::Command.new('Show Grid dialog') { CreateGrid.show_dialog }
       UI.menu('Extensions').add_item show_grid_window
+
+      show_gridbased_window = UI::Command.new('Show Grid-based dialog') { GridBased.show_dialog }
+      UI.menu('Extensions').add_item show_gridbased_window
     end
   end
 end
