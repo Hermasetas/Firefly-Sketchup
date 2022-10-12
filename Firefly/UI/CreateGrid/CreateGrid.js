@@ -1,5 +1,5 @@
 function initUI() {
-
+    randomizeGridName();
 }
 
 function updateFaceLabel(face_id) {
@@ -19,9 +19,18 @@ function createGrid() {
     let spacing = getElementValue('spacing_input');
     let height = getElementValue('height_input');
 
+    console.log(face_id, name, spacing, height);
     sketchup.create_grid(face_id, name, spacing, height);
+
+    randomizeGridName();
 }
 
 function getElementValue(id) {
     return document.getElementById(id).value;
+}
+
+function randomizeGridName() {
+    let number = Math.floor(Math.random() * 10000);
+    let name = 'Firefly grid #' + number;
+    document.getElementById('name_input').value = name;
 }
