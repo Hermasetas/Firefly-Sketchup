@@ -3,8 +3,23 @@
     <link rel="stylesheet" href="GridBased.css">
 </head>
 <body onload="initUI()">
-    Grid based simulation
+    <b>Grid based simulation</b>
+
+    <label>Select a grid:</label>
+    <select id="grid_select"></select>
+
+    <label>Where do you want to see the image?</label>
+    <label>
+        <input type="radio" name="image_type" value="onGrid" checked>
+        On the grid in the model
+    </label>
+    <label>
+        <input type="radio" name="image_type" value="asPicture">
+        As an image file
+    </label>
     
+    <br>
+    <button id="run_button">Create image!</button>
 
 
     <script src="GridBased.js"></script>
